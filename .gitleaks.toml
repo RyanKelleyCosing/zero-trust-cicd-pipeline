@@ -1,0 +1,54 @@
+# Gitleaks configuration for Zero-Trust CI/CD Pipeline
+# https://github.com/gitleaks/gitleaks
+
+title = "Zero-Trust Security Scan"
+
+[extend]
+# Use the default gitleaks config as a base
+useDefault = true
+
+# Custom rules for this project
+[[rules]]
+id = "azure-storage-key"
+description = "Azure Storage Account Key"
+regex = '''AccountKey=[a-zA-Z0-9+/=]{86,88}'''
+tags = ["azure", "storage", "key"]
+
+[[rules]]
+id = "azure-connection-string"
+description = "Azure Connection String"
+regex = '''DefaultEndpointsProtocol=https;AccountName=[^;]+;AccountKey=[a-zA-Z0-9+/=]{86,88}'''
+tags = ["azure", "connection-string"]
+
+[[rules]]
+id = "azure-sas-token"
+description = "Azure SAS Token"
+regex = '''[?&]sig=[a-zA-Z0-9%]{43,}'''
+tags = ["azure", "sas", "token"]
+
+[[rules]]
+id = "azure-client-secret"
+description = "Azure Service Principal Secret"
+regex = '''(?i)(client_secret|clientsecret|azure_client_secret)\s*[=:]\s*["']?[a-zA-Z0-9~_.-]{34,}["']?'''
+tags = ["azure", "service-principal"]
+
+[[rules]]
+id = "sql-connection-string"
+description = "SQL Server Connection String with Password"
+regex = '''(?i)(Password|Pwd)\s*=\s*[^;]+'''
+tags = ["sql", "password"]
+
+# Allowlist - files and patterns to ignore
+[allowlist]
+description = "Global allowlist"
+paths = [
+    '''(.*/)?\.gitleaks\.toml$''',
+    '''(.*/)?README\.md$''',
+    '''(.*/)?test[s]?/.*''',
+]
+regexes = [
+    '''EXAMPLE''',
+    '''placeholder''',
+    '''your-.*-here''',
+]
+
