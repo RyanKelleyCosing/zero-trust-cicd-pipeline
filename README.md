@@ -1,4 +1,4 @@
-# 🔐 Zero-Trust CI/CD Pipeline
+# Zero-Trust CI/CD Pipeline
 
 [![Security Scan](https://img.shields.io/badge/Security-Passed-green?logo=github-actions)](.)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -6,14 +6,14 @@
 
 A production-ready CI/CD pipeline implementing **zero-trust security principles**. The pipeline automatically fails if any security vulnerabilities are detected, ensuring only secure code reaches production.
 
-## 🎯 What This Project Demonstrates
+## What This Project Demonstrates
 
 - **Shift-left security**: Security scanning integrated at the earliest stage of development
 - **Automated vulnerability detection**: No manual security reviews needed for common issues
 - **Policy-as-code**: Security rules enforced automatically, not by process
 - **Defense in depth**: Multiple scanning layers (secrets, SAST, dependencies, containers)
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -40,7 +40,7 @@ A production-ready CI/CD pipeline implementing **zero-trust security principles*
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - GitHub account
@@ -52,7 +52,7 @@ A production-ready CI/CD pipeline implementing **zero-trust security principles*
 2. Create a PR to see security scan results as comments
 3. Check the Actions tab for detailed scan reports
 
-## 🔒 Security Features
+## Security Features
 
 | Feature | Tool | What It Detects |
 |---------|------|-----------------|
@@ -62,7 +62,7 @@ A production-ready CI/CD pipeline implementing **zero-trust security principles*
 | Container Scan | Trivy | Vulnerabilities in Docker images |
 | License Check | Trivy | Non-compliant open source licenses |
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── .github/
@@ -82,7 +82,7 @@ A production-ready CI/CD pipeline implementing **zero-trust security principles*
 └── README.md
 ```
 
-## 🧪 Testing the Security Gates
+## Testing the Security Gates
 
 ### Test 1: Secret Detection
 Create a file with a fake API key - the pipeline will fail:
@@ -97,7 +97,7 @@ Add an old package version with known CVEs - the pipeline will fail:
 <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
 ```
 
-## 🌐 Deployment
+## Deployment
 
 The pipeline deploys to Azure App Service only when all security checks pass:
 
@@ -107,13 +107,13 @@ AZURE_CREDENTIALS    # Service principal JSON
 AZURE_SUBSCRIPTION   # Azure subscription ID
 ```
 
-## 📊 Compliance & Reporting
+## Compliance & Reporting
 
 - **SARIF Reports**: Security findings in GitHub Security tab
 - **PR Comments**: Automatic security summary on pull requests
 - **Badges**: Real-time status badges for README
 
-## 🔧 Configuration
+## Configuration
 
 ### Customize Security Rules
 Edit `.gitleaks.toml` to add custom secret patterns:
@@ -123,19 +123,19 @@ description = "Custom API Key"
 regex = '''my-company-key-[a-zA-Z0-9]{32}'''
 ```
 
-## 📈 Why This Matters
+## Why This Matters
 
 This pipeline prevents security incidents **before** they happen:
 - ⏱️ **Faster feedback**: Developers know immediately if code is insecure
-- 💰 **Cost savings**: Fix issues in dev, not production
-- 🛡️ **Compliance**: Automated evidence for audits
-- 🚫 **Zero trust**: Never assume code is safe
+-  **Cost savings**: Fix issues in dev, not production
+-  **Compliance**: Automated evidence for audits
+-  **Zero trust**: Never assume code is safe
 
-## 📝 License
+## License
 
 MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
-**Built with ❤️ for secure DevOps practices**
+**Built for secure DevOps practices**
 
